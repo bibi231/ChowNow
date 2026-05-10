@@ -45,15 +45,29 @@ Available at `/admin`, this interface allows staff to control the restaurant's o
 
 ## 🛠️ How to Control & Manipulate
 
-### Adding/Editing Menu Items
-- **Local JSON:** The system seeds data from `public/assets/data/menu.json`. You can add new items here and run the seed script.
-- **Seeding Script:** Run `node seedMenu.mjs` to sync your local data into the database automatically.
-- **Admin Panel:** Admins can also manage items (if the feature is toggled) or use the Database Studio.
+### Operational Flow (The Lifecycle of an Order)
+1. **Ordering:** A user adds items to the cart, proceeds to checkout, and completes the payment.
+2. **Dashboard Tracking:** The user is redirected to `/account` where they see their order as `PENDING`.
+3. **Admin Kitchen Management:**
+   - Staff logs in at `/admin`.
+   - The new order appears in the "Active Orders" list.
+   - Staff clicks **Start Preparing** (status changes to `PREPARING`).
+   - Once the meal is ready, staff clicks **Mark as Ready** (status changes to `READY FOR PICKUP`).
+4. **Fulfillment:**
+   - The user sees `READY` on their dashboard.
+   - They arrive at the restaurant and provide their **6-digit Pickup Code**.
+   - Staff verifies the code and clicks **Complete Order** (status becomes `DELIVERED`).
 
-### Theming (Light/Dark Mode)
+### Managing the Menu Data
+- **Bulk Updates:** Modify `public/assets/data/menu.json` and run `node seedMenu.mjs`.
+- **Direct Database Control:**
+  - Run `npx prisma studio` to open a visual database editor.
+  - Here you can manually delete orders, edit user roles, or update food descriptions without coding.
+
+### Theming
 - The system uses a persistent theme toggle in the Navbar.
 - It leverages Bootstrap's `data-bs-theme` attribute on the root element.
-- All custom styles in `public/assets/css/style.css` are designed to respect these theme variables.
+- All custom styles in `public/assets/css/style.css` use transparent backgrounds or theme-aware variables to look perfect in both modes.
 
 ---
 
