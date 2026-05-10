@@ -13,10 +13,16 @@ async function main() {
 
   for (const item of menuItems) {
     await prisma.menuItem.upsert({
-      where: { id: item.id },
-      update: {},
+      where: { id: String(item.id) },
+      update: {
+        name: item.name,
+        description: item.description || '',
+        price: item.price,
+        category: item.category,
+        image: item.image,
+      },
       create: {
-        id: item.id,
+        id: String(item.id),
         name: item.name,
         description: item.description || '',
         price: item.price,
