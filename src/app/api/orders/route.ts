@@ -10,14 +10,11 @@ function generatePickupCode() {
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
-
-    if (!session || !session.user) {
+    if (!session?.user) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
-    const body = await req.json();
-    const { items, total } = body;
-
+    const { items, total, paymentRef } = await req.json();
     if (!items || !items.length || typeof total === 'undefined') {
       return NextResponse.json({ message: 'Invalid payload' }, { status: 400 });
     }
@@ -25,9 +22,11 @@ export async function POST(req: Request) {
     const order = await prisma.order.create({
       data: {
         userId: session.user.id,
-        items: items,
-        total: total + 500, // include delivery in DB
+        items,
+        total,           // cart already includes delivery fee
         pickupCode: generatePickupCode(),
+        paymentMethod: paymentRef ? 'Card (Test)' : 'Bank Transfer',
+        paymentRef: paymentRef || null,
       },
     });
 

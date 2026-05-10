@@ -50,7 +50,7 @@ export default async function AccountPage() {
 
         <div className="col-lg-8">
           <div className="card border-0 shadow-sm rounded-4 h-100">
-            <div className="card-header bg-white border-0 p-4 pb-0">
+            <div className="card-header bg-body border-0 p-4 pb-0">
               <h3 className="fw-bold mb-0">Order History</h3>
             </div>
             <div className="card-body p-4">
@@ -81,8 +81,8 @@ export default async function AccountPage() {
                           <td>
                             <span className={
                               `badge fw-normal border ` +
-                              (order.status === 'PENDING' ? 'bg-light text-secondary border-secondary' : '') +
-                              (order.status === 'PREPARING' ? 'bg-warning text-dark border-warning' : '') +
+                              (order.status === 'PENDING' ? 'bg-body-tertiary text-secondary border-secondary' : '') +
+                              (order.status === 'PREPARING' ? 'bg-warning text-body border-warning' : '') +
                               (order.status === 'READY_FOR_PICKUP' ? 'bg-primary text-white border-primary' : '') +
                               (order.status === 'DELIVERED' ? 'bg-success text-white border-success' : '')
                             }>

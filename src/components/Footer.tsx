@@ -18,6 +18,7 @@ export default function Footer() {
               <li className="mb-2"><Link href="/" className="text-secondary text-decoration-none hover-white">Home</Link></li>
               <li className="mb-2"><Link href="/menu" className="text-secondary text-decoration-none hover-white">Menu</Link></li>
               <li className="mb-2"><Link href="/cart" className="text-secondary text-decoration-none hover-white">Cart</Link></li>
+              <li className="mb-2"><Link href="/admin" className="text-secondary text-decoration-none hover-white">Admin Dashboard</Link></li>
             </ul>
           </div>
           <div className="col-lg-4">

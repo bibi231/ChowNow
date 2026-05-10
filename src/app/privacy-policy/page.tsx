@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="container py-5 mt-5 bg-white rounded-4 shadow-sm" style={{ minHeight: '70vh' }}>
+    <div className="container py-5 mt-5 bg-body rounded-4 shadow-sm" style={{ minHeight: '70vh' }}>
       <h2 className="fw-bold mb-4">Privacy Policy</h2>
       <p className="text-muted">Last updated: {new Date().toLocaleDateString()}</p>
       

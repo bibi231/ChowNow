@@ -53,7 +53,7 @@ export default async function SettingsPage() {
 
         <div className="col-lg-8">
           <div className="card border-0 shadow-sm rounded-4 h-100">
-            <div className="card-header bg-white border-0 p-4 pb-0">
+            <div className="card-header bg-body border-0 p-4 pb-0">
               <h3 className="fw-bold mb-0">Account Settings</h3>
             </div>
             <div className="card-body p-4">
@@ -61,12 +61,12 @@ export default async function SettingsPage() {
                 <div className="row g-3">
                   <div className="col-md-6">
                     <label className="form-label text-muted">Full Name</label>
-                    <input type="text" className="form-control bg-light" defaultValue={user.name} readOnly />
+                    <input type="text" className="form-control bg-body-tertiary" defaultValue={user.name} readOnly />
                     <small className="text-muted mt-1 d-block">Contact support to change your name.</small>
                   </div>
                   <div className="col-md-6">
                     <label className="form-label text-muted">Email Address</label>
-                    <input type="email" className="form-control bg-light" defaultValue={user.email} readOnly />
+                    <input type="email" className="form-control bg-body-tertiary" defaultValue={user.email} readOnly />
                   </div>
                   <div className="col-12 mt-4">
                     <h5 className="fw-bold">Security</h5>
@@ -74,11 +74,11 @@ export default async function SettingsPage() {
                   </div>
                   <div className="col-md-6">
                     <label className="form-label text-muted">Role</label>
-                    <input type="text" className="form-control bg-light" defaultValue={user.role} readOnly />
+                    <input type="text" className="form-control bg-body-tertiary" defaultValue={user.role} readOnly />
                   </div>
                   <div className="col-md-6">
                     <label className="form-label text-muted">Account Created</label>
-                    <input type="text" className="form-control bg-light" defaultValue={new Date(user.createdAt).toLocaleDateString()} readOnly />
+                    <input type="text" className="form-control bg-body-tertiary" defaultValue={new Date(user.createdAt).toLocaleDateString()} readOnly />
                   </div>
                 </div>
               </form>
