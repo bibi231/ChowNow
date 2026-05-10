@@ -9,7 +9,7 @@ export default function Home() {
           <div className="row align-items-center">
             <div className="col-lg-6 mb-5 mb-lg-0">
               <span className="badge bg-danger text-white mb-3 px-3 py-2 rounded-pill shadow-sm">Fast Delivery 🚀</span>
-              <h1 className="display-3 fw-bold mb-3">Delicious Food,<br />Delivered To <span className="text-primary">You</span></h1>
+              <h1 className="display-3 fw-bold mb-3 text-body">Delicious Food,<br />Delivered To <span className="text-primary">You</span></h1>
               <p className="lead text-body-secondary mb-4">Craving your favorite meal? Order from ChowNow and get it delivered straight to your door or campus in minutes. No hidden fees, just great food.</p>
               <div className="d-flex gap-3 flex-wrap">
                 <Link href="/menu" className="btn btn-primary btn-lg rounded-pill px-4 shadow">Order Now</Link>
@@ -18,7 +18,7 @@ export default function Home() {
             </div>
             <div className="col-lg-6">
                <div className="position-relative">
-                  <img src="https://images.unsplash.com/photo-1544025162-8315ea07f594?auto=format&fit=crop&w=800&q=80" alt="Delicious Food" className="img-fluid rounded-4 shadow-lg w-100" style={{ objectFit: 'cover', height: '450px' }} />
+                  <img src="/hero-food.png" alt="Delicious Food" className="img-fluid rounded-4 shadow-lg w-100" style={{ objectFit: 'cover', height: '450px' }} />
                   <div className="position-absolute bottom-0 start-0 translate-middle-y ms-4 p-3 bg-body border rounded-4 shadow">
                      <div className="d-flex align-items-center gap-3">
                         <div className="bg-success rounded-circle p-2 text-white"><i className="bi bi-clock-history"></i></div>

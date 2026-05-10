@@ -8,14 +8,18 @@
 
 body {
     font-family: var(--font-primary);
-    background-color: #f4f6f9;
-    color: var(--dark-color);
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
 }
 
 .navbar {
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: var(--bs-body-bg) !important;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+[data-bs-theme="dark"] .navbar {
+    background: rgba(33, 37, 41, 0.95) !important;
 }
 
 .navbar-brand {
@@ -74,7 +78,7 @@ body {
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #fff;
+    background: var(--bs-body-bg);
 }
 
 .food-card:hover {
@@ -103,7 +107,7 @@ body {
 .auth-container {
     max-width: 450px;
     margin: 50px auto;
-    background: #fff;
+    background: var(--bs-body-bg);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -122,7 +126,7 @@ body {
 
 /* Cart & Checkout */
 .cart-item {
-    background: #fff;
+    background: var(--bs-body-bg);
     border-radius: 15px;
     padding: 15px;
     margin-bottom: 15px;
@@ -140,7 +144,7 @@ body {
 }
 
 .summary-card {
-    background: #fff;
+    background: var(--bs-body-bg);
     border-radius: 15px;
     padding: 25px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -150,7 +154,7 @@ body {
 
 /* History Table */
 .table-custom {
-    background: #fff;
+    background: var(--bs-body-bg);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
