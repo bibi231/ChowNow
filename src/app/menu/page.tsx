@@ -291,7 +291,7 @@ export default function Menu() {
                 <div
                   style={{
                     height: '200px',
-                    backgroundImage: `url(${item.image.startsWith('http') ? item.image : `/${item.image}`})`,
+                    backgroundImage: `url(${item.image.startsWith('http') ? item.image : (item.image.startsWith('/') ? item.image : `/${item.image}`)})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     position: 'relative',
