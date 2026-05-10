@@ -17,18 +17,32 @@ export default function Login() {
     setError('');
     setLoading(true);
 
-    const res = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-    });
+    try {
+      // 1. Sign in with Firebase
+      const { signInWithEmailAndPassword } = await import('firebase/auth');
+      const { auth } = await import('@/lib/firebase');
+      
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      // Optional: Get ID Token if needed for back-end verification
+      // const idToken = await userCredential.user.getIdToken();
 
-    setLoading(false);
+      // 2. Clear out for NextAuth (local session)
+      const res = await signIn('credentials', {
+        redirect: false,
+        email,
+        password,
+      });
 
-    if (res?.error) {
+      if (res?.error) {
+        setError('Invalid local account synchronization. Please contact support.');
+      } else {
+        router.push('/menu');
+      }
+    } catch (err: any) {
+      console.error('Login error:', err);
       setError('Invalid email or password');
-    } else {
-      router.push('/menu');
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -19,22 +19,38 @@ export default function Signup() {
     setLoading(true);
 
     try {
+      // 1. Create user in Firebase Auth
+      const { createUserWithEmailAndPassword, updateProfile } = await import('firebase/auth');
+      const { auth } = await import('@/lib/firebase');
+      
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const firebaseUser = userCredential.user;
+
+      // Update Firebase Profile with Name
+      await updateProfile(firebaseUser, { displayName: name });
+
+      // 2. Sync to local Prisma Database
       const res = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, email, password }), // Still passing password for local bcrypt if needed, but Firebase is now primary auth
       });
 
       if (res.ok) {
         router.push('/login');
       } else {
         const data = await res.json();
-        setError(data.message || 'Something went wrong');
+        setError(data.message || 'Firebase account created, but local sync failed');
       }
-    } catch (err) {
-      setError('An error occurred. Please try again.');
+    } catch (err: any) {
+      console.error('Signup error:', err);
+      if (err.code === 'auth/email-already-in-use') {
+        setError('This email is already in use.');
+      } else {
+        setError(err.message || 'An error occurred during signup.');
+      }
     } finally {
       setLoading(false);
     }
